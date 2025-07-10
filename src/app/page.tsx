@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import { useEffect } from "react";
 
 export default function Home() {
@@ -467,7 +466,7 @@ export default function Home() {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {[
               "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
               "https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
@@ -478,7 +477,7 @@ export default function Home() {
               "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
               "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
             ].map((image, index) => (
-              <div key={index} className="gallery-item rounded-2xl overflow-hidden shadow-lg">
+              <div key={index} className="gallery-item rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
                 <img 
                   src={image} 
                   alt={`Gallery ${index + 1}`}
@@ -579,7 +578,7 @@ export default function Home() {
                     </svg>
                   ))}
                 </div>
-                <p className="text-gray-600 italic">"{testimonial.text}"</p>
+                <p className="text-gray-600 italic">&ldquo;{testimonial.text}&rdquo;</p>
               </div>
             ))}
           </div>
