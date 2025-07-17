@@ -1,28 +1,32 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Times+New+Roman+Condensed:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Proxima+Nova:wght@300;400;500;600;700&display=swap');
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #052254;
+  --primary-brown: #594323;
+  --primary-blue: #052254;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-serif: 'Times New Roman Condensed', 'Times New Roman', serif;
+  --font-sans: 'Proxima Nova', 'Inter', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffffff;
+    --foreground: #052254;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Times New Roman Condensed', 'Times New Roman', serif;
 }
 
 /* Custom scrollbar */
@@ -35,12 +39,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(45deg, #ec4899, #8b5cf6);
+  background: linear-gradient(45deg, #594323, #052254);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(45deg, #db2777, #7c3aed);
+  background: linear-gradient(45deg, #6b4e28, #063066);
 }
 
 /* Smooth scrolling */
@@ -109,7 +113,7 @@ html {
 }
 
 .gradient-animation {
-  background: linear-gradient(-45deg, #ec4899, #8b5cf6, #3b82f6, #06b6d4);
+  background: linear-gradient(-45deg, #594323, #052254, #8b7355, #0a3b6b);
   background-size: 400% 400%;
   animation: gradient 4s ease infinite;
   -webkit-background-clip: text;
@@ -119,13 +123,13 @@ html {
 
 /* Custom button hover effects */
 .btn-gradient {
-  background: linear-gradient(45deg, #ec4899, #8b5cf6);
+  background: linear-gradient(45deg, #594323, #052254);
   transition: all 0.3s ease;
 }
 
 .btn-gradient:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(236, 72, 153, 0.3);
+  box-shadow: 0 10px 25px rgba(89, 67, 35, 0.3);
 }
 
 /* Section spacing */
@@ -192,7 +196,7 @@ section {
 button:focus,
 input:focus,
 textarea:focus {
-  outline: 2px solid #ec4899;
+  outline: 2px solid #594323;
   outline-offset: 2px;
 }
 
@@ -282,7 +286,7 @@ textarea:focus {
 /* Gradient borders */
 .gradient-border {
   position: relative;
-  background: linear-gradient(45deg, #ec4899, #8b5cf6, #3b82f6);
+  background: linear-gradient(45deg, #594323, #052254, #8b7355);
   padding: 2px;
   border-radius: 1.5rem;
 }
@@ -312,10 +316,11 @@ textarea:focus {
 .nav-link {
   color: rgba(255, 255, 255, 0.9);
   font-weight: 500;
+  font-family: 'Times New Roman Condensed', 'Times New Roman', serif;
 }
 
 #navbar.scrolled .nav-link {
-  color: #374151;
+  color: #052254;
 }
 
 .mobile-menu-line {
@@ -323,7 +328,7 @@ textarea:focus {
 }
 
 #navbar.scrolled .mobile-menu-line {
-  background: #374151;
+  background: #052254;
 }
 
 /* Testimonial Cards */
@@ -337,6 +342,7 @@ textarea:focus {
 .stats-number {
   font-feature-settings: 'tnum';
   font-variant-numeric: tabular-nums;
+  font-family: 'Times New Roman Condensed', 'Times New Roman', serif;
 }
 
 /* Gallery Hover Effects */
@@ -353,7 +359,7 @@ textarea:focus {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(45deg, rgba(236, 72, 153, 0.8), rgba(139, 92, 246, 0.8));
+  background: linear-gradient(45deg, rgba(89, 67, 35, 0.8), rgba(5, 34, 84, 0.8));
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 1;
@@ -377,7 +383,7 @@ textarea:focus {
 }
 
 .faq-item.active {
-  background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(139, 92, 246, 0.1));
+  background: linear-gradient(135deg, rgba(89, 67, 35, 0.1), rgba(5, 34, 84, 0.1));
 }
 
 /* Parallax Effect */
@@ -386,4 +392,53 @@ textarea:focus {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+/* Custom utility classes for new branding */
+.text-primary-brown {
+  color: #594323;
+}
+
+.text-primary-blue {
+  color: #052254;
+}
+
+.bg-primary-brown {
+  background-color: #594323;
+}
+
+.bg-primary-blue {
+  background-color: #052254;
+}
+
+.border-primary-brown {
+  border-color: #594323;
+}
+
+.border-primary-blue {
+  border-color: #052254;
+}
+
+.font-serif-condensed {
+  font-family: 'Times New Roman Condensed', 'Times New Roman', serif;
+}
+
+.font-proxima {
+  font-family: 'Proxima Nova', 'Inter', sans-serif;
+}
+
+/* Brown-blue gradient utilities */
+.bg-gradient-brown-blue {
+  background: linear-gradient(45deg, #594323, #052254);
+}
+
+.bg-gradient-brown-blue-light {
+  background: linear-gradient(45deg, #8b7355, #0a3b6b);
+}
+
+.text-gradient-brown-blue {
+  background: linear-gradient(45deg, #594323, #052254);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
