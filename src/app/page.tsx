@@ -765,7 +765,7 @@ export default function Home() {
               </span>
             </h2>
             <p className="text-xl font-proxima text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              <span className="text-primary-brown font-semibold">İstanbul'un kalbinde</span>, tüm üniversitelere ve sosyal alanlara 
+              <span className="text-primary-brown font-semibold">İstanbul&apos;un kalbinde</span>, tüm üniversitelere ve sosyal alanlara 
               <span className="text-primary-blue font-semibold"> kolayca ulaşabileceğiniz</span> eşsiz konumumuz.
             </p>
           </div>
@@ -1164,10 +1164,10 @@ export default function Home() {
         
         {/* Quote Marks and Speech Elements */}
         <div className="absolute top-20 left-20 w-12 h-12 border-4 border-primary-brown/25 rounded-full animate-pulse">
-          <div className="absolute top-1 left-2 text-2xl text-primary-brown/30">"</div>
+          <div className="absolute top-1 left-2 text-2xl text-primary-brown/30">&quot;</div>
         </div>
         <div className="absolute bottom-20 right-20 w-16 h-16 border-3 border-primary-blue/25 rounded-full rotate-12 animate-spin-slow">
-          <div className="absolute top-2 right-3 text-xl text-primary-blue/30">"</div>
+          <div className="absolute top-2 right-3 text-xl text-primary-blue/30">&quot;</div>
         </div>
         <div className="absolute top-1/3 right-16 w-8 h-8 bg-amber-400/30 rounded-full animate-bounce" style={{animationDelay: '2.2s'}}></div>
         <div className="absolute bottom-1/3 left-16 w-10 h-10 bg-primary-brown/20 rounded-full animate-pulse" style={{animationDelay: '1.2s'}}></div>
