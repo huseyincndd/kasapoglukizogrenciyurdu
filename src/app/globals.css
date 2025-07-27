@@ -251,27 +251,27 @@ textarea:focus {
 }
 
 .animate-slide-1 {
-  animation: slideShow1 12s infinite;
+  animation: slideShow1 20s infinite;
 }
 
 .animate-slide-2 {
-  animation: slideShow2 12s infinite;
+  animation: slideShow2 20s infinite;
 }
 
 .animate-slide-3 {
-  animation: slideShow3 12s infinite;
+  animation: slideShow3 20s infinite;
 }
 
 .animate-dot-1 {
-  animation: dotActive1 12s infinite;
+  animation: dotActive1 20s infinite;
 }
 
 .animate-dot-2 {
-  animation: dotActive2 12s infinite;
+  animation: dotActive2 20s infinite;
 }
 
 .animate-dot-3 {
-  animation: dotActive3 12s infinite;
+  animation: dotActive3 20s infinite;
 }
 
 /* Enhanced hover effects for cards */

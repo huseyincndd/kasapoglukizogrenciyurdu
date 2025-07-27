@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Ana Sayfa -->
+  <url>
+    <loc>https://kasapogullariapart.com.tr/</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://kasapogullariapart.com.tr/og-image.jpg</image:loc>
+      <image:title>Kasapoğulları Kız Öğrenci Yurdu Kütahya</image:title>
+      <image:caption>Kütahya'da güvenli ve konforlu kız öğrenci yurdu</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Hakkımızda Sayfası (Anchor) -->
+  <url>
+    <loc>https://kasapogullariapart.com.tr/#hakkimizda</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Olanaklar Sayfası (Anchor) -->
+  <url>
+    <loc>https://kasapogullariapart.com.tr/#olanaklar</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Odalar Sayfası (Anchor) -->
+  <url>
+    <loc>https://kasapogullariapart.com.tr/#odalar</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Galeri Sayfası (Anchor) -->
+  <url>
+    <loc>https://kasapogullariapart.com.tr/#galeri</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- İletişim Sayfası (Anchor) -->
+  <url>
+    <loc>https://kasapogullariapart.com.tr/#iletisim</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+</urlset> 
