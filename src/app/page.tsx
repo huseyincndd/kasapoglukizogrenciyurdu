@@ -97,7 +97,7 @@ export default function Home() {
               <span className="text-white">Kız Öğrenci Yurdu</span>
             </h1>
             <p className="text-xl md:text-3xl font-proxima text-white/90 mb-12 max-w-4xl mx-auto drop-shadow-lg">
-              Kütahya'da güvenli, konforlu ve modern yaşam alanları ile eğitim hayatınızda size destek oluyoruz. Dumlupınar Üniversitesi ve Sağlık Bilimleri Üniversitesi'ne yakın konumda.
+              Kütahya&apos;da güvenli, konforlu ve modern yaşam alanları ile eğitim hayatınızda size destek oluyoruz. Dumlupınar Üniversitesi ve Sağlık Bilimleri Üniversitesi&apos;ne yakın konumda.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <button className="group relative px-12 py-6 bg-gradient-brown-blue text-white rounded-full text-xl font-bold font-serif-condensed overflow-hidden shadow-2xl transform hover:scale-110 transition-all duration-500 backdrop-blur-sm">
