@@ -1,7 +1,9 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   useEffect(() => {
     const handleScroll = () => {
       const navbar = document.getElementById('navbar');
@@ -17,6 +19,87 @@ export default function Home() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Keyboard navigation for lightbox
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!lightboxOpen) return;
+      
+      switch (e.key) {
+        case 'Escape':
+          closeLightbox();
+          break;
+        case 'ArrowLeft':
+          prevImage();
+          break;
+        case 'ArrowRight':
+          nextImage();
+          break;
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [lightboxOpen]);
+
+  const openLightbox = (index: number) => {
+    setCurrentImageIndex(index);
+    setLightboxOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+    document.body.style.overflow = 'unset';
+  };
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % galleryImages.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+  };
+
+  const galleryImages = [
+    { 
+      image: "https://villaqrmenu.b-cdn.net/kasapogullari/1.png"
+    },
+    { 
+      image: "https://villaqrmenu.b-cdn.net/kasapogullari/2.png"
+    },
+    { 
+      image: "https://villaqrmenu.b-cdn.net/kasapogullari/3.png"
+    },
+    { 
+      image: "https://villaqrmenu.b-cdn.net/kasapogullari/4.png"
+    },
+    { 
+      image: "https://villaqrmenu.b-cdn.net/kasapogullari/5.png"
+    },
+    { 
+      image: "https://villaqrmenu.b-cdn.net/kasapogullari/6.png"
+    },
+    { 
+      image: "https://villaqrmenu.b-cdn.net/kasapogullari/7.png"
+    },
+    { 
+      image: "https://villaqrmenu.b-cdn.net/kasapogullari/8.png"
+    },
+    { 
+      image: "https://villaqrmenu.b-cdn.net/kasapogullari/9.png"
+    },
+    { 
+      image: "https://villaqrmenu.b-cdn.net/kasapogullari/10.png"
+    },
+    { 
+      image: "https://villaqrmenu.b-cdn.net/kasapogullari/11.png"
+    },
+    { 
+      image: "https://villaqrmenu.b-cdn.net/kasapogullari/12.png"
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-blue-50">
       {/* Navigation */}
@@ -988,63 +1071,84 @@ export default function Home() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { 
-                image: "https://villaqrmenu.b-cdn.net/kasapogullari/1.png"
-              },
-              { 
-                image: "https://villaqrmenu.b-cdn.net/kasapogullari/2.png"
-              },
-              { 
-                image: "https://villaqrmenu.b-cdn.net/kasapogullari/3.png"
-              },
-              { 
-                image: "https://villaqrmenu.b-cdn.net/kasapogullari/4.png"
-              },
-              { 
-                image: "https://villaqrmenu.b-cdn.net/kasapogullari/5.png"
-              },
-              { 
-                image: "https://villaqrmenu.b-cdn.net/kasapogullari/6.png"
-              },
-              { 
-                image: "https://villaqrmenu.b-cdn.net/kasapogullari/7.png"
-              },
-              { 
-                image: "https://villaqrmenu.b-cdn.net/kasapogullari/8.png"
-              },
-              { 
-                image: "https://villaqrmenu.b-cdn.net/kasapogullari/9.png"
-              },
-              { 
-                image: "https://villaqrmenu.b-cdn.net/kasapogullari/10.png"
-              },
-              { 
-                image: "https://villaqrmenu.b-cdn.net/kasapogullari/11.png"
-              },
-              { 
-                image: "https://villaqrmenu.b-cdn.net/kasapogullari/12.png"
-              }
-            ].map((item, index) => (
-              <div key={index} className="group relative gallery-item rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 cursor-pointer">
+            {galleryImages.map((item, index) => (
+              <div 
+                key={index} 
+                className="relative gallery-item rounded-3xl overflow-hidden shadow-xl cursor-pointer transform transition-all duration-200 hover:shadow-2xl hover:-translate-y-1"
+                onClick={() => openLightbox(index)}
+                style={{
+                  willChange: 'transform',
+                }}
+              >
                 <div className="relative h-80 overflow-hidden">
                   <img 
                     src={item.image} 
                     alt="Galeri Resmi"
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="w-full h-full object-cover transition-transform duration-300 ease-out"
+                    style={{
+                      willChange: 'transform',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'scale(1.05)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'scale(1)';
+                    }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
+                  
+                  {/* Overlay that appears on hover */}
+                  <div 
+                    className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 transition-opacity duration-200"
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.opacity = '1';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.opacity = '0';
+                    }}
+                  />
                   
                   {/* View Icon */}
-                  <div className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform scale-0 group-hover:scale-100 transition-all duration-300">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div 
+                    className="absolute top-4 right-4 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-200"
+                    style={{
+                      opacity: '0',
+                      transform: 'scale(0.8)',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.opacity = '1';
+                      e.currentTarget.style.transform = 'scale(1)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.opacity = '0';
+                      e.currentTarget.style.transform = 'scale(0.8)';
+                    }}
+                  >
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7l3 3-3 3" />
                     </svg>
                   </div>
+                  
+                  {/* Click to View Text */}
+                  <div 
+                    className="absolute bottom-4 left-4 transition-all duration-200"
+                    style={{
+                      opacity: '0',
+                      transform: 'translateY(10px)',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.opacity = '1';
+                      e.currentTarget.style.transform = 'translateY(0)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.opacity = '0';
+                      e.currentTarget.style.transform = 'translateY(10px)';
+                    }}
+                  >
+                    <span className="text-white font-medium text-sm bg-black/50 px-3 py-2 rounded-full backdrop-blur-sm">
+                      Görüntülemek için tıklayın
+                    </span>
+                  </div>
                 </div>
-
-                {/* Hover Effect Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary-brown/10 to-primary-blue/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
             ))}
           </div>
@@ -1370,6 +1474,66 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Lightbox Modal */}
+      {lightboxOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm">
+          <div className="relative w-full h-full flex items-center justify-center p-4">
+            {/* Close Button */}
+            <button
+              onClick={closeLightbox}
+              className="absolute top-4 right-4 z-10 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Previous Button */}
+            <button
+              onClick={prevImage}
+              className="absolute left-8 top-1/2 transform -translate-y-1/2 z-10 w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 shadow-lg"
+            >
+              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+
+            {/* Next Button */}
+            <button
+              onClick={nextImage}
+              className="absolute right-8 top-1/2 transform -translate-y-1/2 z-10 w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 shadow-lg"
+            >
+              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            {/* Image */}
+            <div className="relative w-full h-full flex items-center justify-center">
+              <img
+                src={galleryImages[currentImageIndex].image}
+                alt={`Galeri Resmi ${currentImageIndex + 1}`}
+                className="max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain rounded-lg shadow-2xl"
+                style={{
+                  minWidth: '60vw',
+                  minHeight: '60vh'
+                }}
+              />
+              
+              {/* Image Counter */}
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium">
+                {currentImageIndex + 1} / {galleryImages.length}
+              </div>
+            </div>
+
+            {/* Keyboard Navigation */}
+            <div className="absolute bottom-4 left-4 text-white/60 text-sm">
+              <p>← → tuşları ile gezinin</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
