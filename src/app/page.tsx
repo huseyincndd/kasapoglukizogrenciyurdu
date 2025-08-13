@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import VideoEmbed from "../components/VideoEmbed";
 
 export default function Home() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -54,51 +55,43 @@ export default function Home() {
   };
 
   const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % galleryImages.length);
+    setCurrentImageIndex((prev) => (prev + 1) % allGalleryImages.length);
   };
 
   const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+    setCurrentImageIndex((prev) => (prev - 1 + allGalleryImages.length) % allGalleryImages.length);
   };
 
-  const galleryImages = [
-    { 
-      image: "https://villaqrmenu.b-cdn.net/kasapogullari/1.png"
-    },
-    { 
-      image: "https://villaqrmenu.b-cdn.net/kasapogullari/2.png"
-    },
-    { 
-      image: "https://villaqrmenu.b-cdn.net/kasapogullari/3.png"
-    },
-    { 
-      image: "https://villaqrmenu.b-cdn.net/kasapogullari/4.png"
-    },
-    { 
-      image: "https://villaqrmenu.b-cdn.net/kasapogullari/5.png"
-    },
-    { 
-      image: "https://villaqrmenu.b-cdn.net/kasapogullari/6.png"
-    },
-    { 
-      image: "https://villaqrmenu.b-cdn.net/kasapogullari/7.png"
-    },
-    { 
-      image: "https://villaqrmenu.b-cdn.net/kasapogullari/8.png"
-    },
-    { 
-      image: "https://villaqrmenu.b-cdn.net/kasapogullari/9.png"
-    },
-    { 
-      image: "https://villaqrmenu.b-cdn.net/kasapogullari/10.png"
-    },
-    { 
-      image: "https://villaqrmenu.b-cdn.net/kasapogullari/11.png"
-    },
-    { 
-      image: "https://villaqrmenu.b-cdn.net/kasapogullari/12.png"
-    }
+  // Tüm galeri resimleri (27 adet)
+  const allGalleryImages = [
+    // Mevcut PNG resimler (1-12)
+    ...Array.from({length: 12}, (_, i) => ({
+      image: `https://villaqrmenu.b-cdn.net/kasapogullari/${i + 1}.png`
+    })),
+    // JPG resimler (13-14)
+    { image: `https://villaqrmenu.b-cdn.net/kasapogullari/13.jpg` },
+    { image: `https://villaqrmenu.b-cdn.net/kasapogullari/14.jpg` },
+    // WebP resimler (15-27)
+    ...Array.from({length: 13}, (_, i) => ({
+      image: `https://villaqrmenu.b-cdn.net/kasapogullari/${i + 15}.webp`
+    }))
   ];
+
+  // Gösterilecek resim sayısı state'i
+  const [visibleImages, setVisibleImages] = useState(9);
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Şu anda gösterilen resimler
+  const galleryImages = allGalleryImages.slice(0, visibleImages);
+
+  // Daha fazla resim yükleme fonksiyonu
+  const loadMoreImages = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setVisibleImages(prev => Math.min(prev + 9, allGalleryImages.length));
+      setIsLoading(false);
+    }, 500); // Smooth loading effect için gecikme
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-blue-50">
@@ -1060,97 +1053,177 @@ export default function Home() {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
+            <div className="inline-flex items-center mb-6 bg-white/80 backdrop-blur-sm border border-amber-200 text-primary-brown px-8 py-3 rounded-full shadow-lg">
+              <span className="text-2xl mr-3">🎬</span>
+              <span className="font-serif-condensed font-bold text-lg">Video Galeri</span>
+            </div>
             <h2 className="text-4xl md:text-5xl font-bold font-serif-condensed text-gray-900 mb-6">
               <span className="text-gradient-brown-blue">
                 Galeri
               </span>
             </h2>
-            <p className="text-xl font-proxima text-gray-600 max-w-3xl mx-auto">
-              Yurdumuzdaki yaşam alanlarından görüntüler
+            <p className="text-xl font-proxima text-gray-600 max-w-3xl mx-auto mb-12">
+              Yurdumuzdaki yaşam alanlarından videolar ve görüntüler
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {galleryImages.map((item, index) => (
-              <div 
-                key={index} 
-                className="relative gallery-item rounded-3xl overflow-hidden shadow-xl cursor-pointer transform transition-all duration-200 hover:shadow-2xl hover:-translate-y-1"
-                onClick={() => openLightbox(index)}
-                style={{
-                  willChange: 'transform',
-                }}
-              >
-                <div className="relative h-80 overflow-hidden">
-                  <img 
-                    src={item.image} 
-                    alt="Galeri Resmi"
-                    className="w-full h-full object-cover transition-transform duration-300 ease-out"
-                    style={{
-                      willChange: 'transform',
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'scale(1.05)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'scale(1)';
-                    }}
-                  />
-                  
-                  {/* Overlay that appears on hover */}
-                  <div 
-                    className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 transition-opacity duration-200"
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.opacity = '1';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.opacity = '0';
-                    }}
-                  />
-                  
-                  {/* View Icon */}
-                  <div 
-                    className="absolute top-4 right-4 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-200"
-                    style={{
-                      opacity: '0',
-                      transform: 'scale(0.8)',
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.opacity = '1';
-                      e.currentTarget.style.transform = 'scale(1)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.opacity = '0';
-                      e.currentTarget.style.transform = 'scale(0.8)';
-                    }}
-                  >
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7l3 3-3 3" />
-                    </svg>
-                  </div>
-                  
-                  {/* Click to View Text */}
-                  <div 
-                    className="absolute bottom-4 left-4 transition-all duration-200"
-                    style={{
-                      opacity: '0',
-                      transform: 'translateY(10px)',
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.opacity = '1';
-                      e.currentTarget.style.transform = 'translateY(0)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.opacity = '0';
-                      e.currentTarget.style.transform = 'translateY(10px)';
-                    }}
-                  >
-                    <span className="text-white font-medium text-sm bg-black/50 px-3 py-2 rounded-full backdrop-blur-sm">
-                      Görüntülemek için tıklayın
-                    </span>
+          {/* Video Gallery Section */}
+          <div className="mb-20">
+            <h3 className="text-3xl font-bold font-serif-condensed text-center text-primary-blue mb-12">
+              🎥 Video Galeri
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+              {[
+                { id: 'Oe5mqkPMyMA', title: 'Yurt Tanıtım Videosu' },
+                { id: 'pVOolMN6uH0', title: 'Oda Turu' },
+                { id: '1R4VAx2gtRs', title: 'Sosyal Alanlar' },
+                { id: '87bL5knFoE4', title: 'Güvenlik Sistemi' },
+                { id: 'knuBOeDwrHw', title: 'Konumsal Avantajlar' },
+                { id: 'crq31dTmGTU', title: 'Günlük Yaşam' }
+              ].map((video, index) => (
+                <VideoEmbed
+                  key={index}
+                  provider="youtube"
+                  id={video.id}
+                  title={video.title}
+                  className="group hover:scale-105 transition-transform duration-300"
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div className="flex items-center justify-center mb-16">
+            <div className="flex-1 h-0.5 bg-gradient-brown-blue"></div>
+            <div className="mx-6 w-3 h-3 bg-gradient-brown-blue rounded-full"></div>
+            <div className="flex-1 h-0.5 bg-gradient-brown-blue"></div>
+          </div>
+          
+          {/* Photo Gallery Section */}
+          <div>
+            <h3 className="text-3xl font-bold font-serif-condensed text-center text-primary-blue mb-12">
+              📸 Fotoğraf Galeri
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {galleryImages.map((item, index) => (
+                <div 
+                  key={index} 
+                  className="relative gallery-item rounded-3xl overflow-hidden shadow-xl cursor-pointer transform transition-all duration-200 hover:shadow-2xl hover:-translate-y-1"
+                  onClick={() => openLightbox(index)}
+                  style={{
+                    willChange: 'transform',
+                  }}
+                >
+                  <div className="relative h-80 overflow-hidden">
+                    <img 
+                      src={item.image} 
+                      alt={`Galeri Resmi ${index + 1}`}
+                      className="w-full h-full object-cover transition-transform duration-300 ease-out"
+                      style={{
+                        willChange: 'transform',
+                      }}
+                      loading="lazy"
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'scale(1.05)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'scale(1)';
+                      }}
+                    />
+                    
+                    {/* Overlay that appears on hover */}
+                    <div 
+                      className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 transition-opacity duration-200"
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.opacity = '1';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.opacity = '0';
+                      }}
+                    />
+                    
+                    {/* View Icon */}
+                    <div 
+                      className="absolute top-4 right-4 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-200"
+                      style={{
+                        opacity: '0',
+                        transform: 'scale(0.8)',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.opacity = '1';
+                        e.currentTarget.style.transform = 'scale(1)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.opacity = '0';
+                        e.currentTarget.style.transform = 'scale(0.8)';
+                      }}
+                    >
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7l3 3-3 3" />
+                      </svg>
+                    </div>
+                    
+                    {/* Click to View Text */}
+                    <div 
+                      className="absolute bottom-4 left-4 transition-all duration-200"
+                      style={{
+                        opacity: '0',
+                        transform: 'translateY(10px)',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.opacity = '1';
+                        e.currentTarget.style.transform = 'translateY(0)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.opacity = '0';
+                        e.currentTarget.style.transform = 'translateY(10px)';
+                      }}
+                    >
+                      <span className="text-white font-medium text-sm bg-black/50 px-3 py-2 rounded-full backdrop-blur-sm">
+                        Görüntülemek için tıklayın
+                      </span>
+                    </div>
                   </div>
                 </div>
+              ))}
+            </div>
+
+            {/* Load More Button */}
+            {visibleImages < allGalleryImages.length && (
+              <div className="text-center mt-12">
+                <button
+                  onClick={loadMoreImages}
+                  disabled={isLoading}
+                  className="group relative px-12 py-4 bg-gradient-brown-blue text-white rounded-full text-lg font-bold font-serif-condensed overflow-hidden shadow-xl transform hover:scale-105 transition-all duration-500 disabled:opacity-70 disabled:cursor-not-allowed"
+                >
+                  <span className="relative z-10 flex items-center justify-center">
+                    {isLoading ? (
+                      <>
+                        <svg className="w-5 h-5 mr-3 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                        </svg>
+                        Yükleniyor...
+                      </>
+                    ) : (
+                      <>
+                        <svg className="w-5 h-5 mr-3 group-hover:rotate-180 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                        </svg>
+                        Daha Fazla Göster ({allGalleryImages.length - visibleImages} kaldı)
+                      </>
+                    )}
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-amber-600 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </button>
               </div>
-            ))}
+            )}
+
+            {/* Image Counter */}
+            <div className="text-center mt-8">
+              <span className="text-gray-500 font-proxima">
+                {visibleImages} / {allGalleryImages.length} fotoğraf gösteriliyor
+              </span>
+            </div>
           </div>
         </div>
       </section>
@@ -1512,7 +1585,7 @@ export default function Home() {
             {/* Image */}
             <div className="relative w-full h-full flex items-center justify-center">
               <img
-                src={galleryImages[currentImageIndex].image}
+                src={allGalleryImages[currentImageIndex].image}
                 alt={`Galeri Resmi ${currentImageIndex + 1}`}
                 className="max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain rounded-lg shadow-2xl"
                 style={{
@@ -1523,7 +1596,7 @@ export default function Home() {
               
               {/* Image Counter */}
               <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium">
-                {currentImageIndex + 1} / {galleryImages.length}
+                {currentImageIndex + 1} / {allGalleryImages.length}
               </div>
             </div>
 
