@@ -345,6 +345,248 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Video Showcase Section */}
+      <section className="py-20 bg-gradient-to-br from-slate-50 via-white to-amber-50 relative overflow-hidden">
+        {/* Same Background as About Section */}
+        <div className="absolute top-10 left-10 w-20 h-20 bg-gradient-to-br from-amber-200 to-orange-200 rounded-full opacity-20 animate-float"></div>
+        <div className="absolute bottom-20 right-20 w-32 h-32 bg-gradient-to-br from-blue-200 to-indigo-200 rounded-full opacity-20 animate-float" style={{animationDelay: '2s'}}></div>
+        <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-gradient-to-br from-primary-brown/20 to-primary-blue/20 rounded-full opacity-30 animate-pulse-slow"></div>
+        
+        <div className="absolute top-1/3 right-1/3 w-28 h-28 bg-gradient-to-br from-primary-brown/10 to-amber-200/15 rounded-full opacity-25 animate-float" style={{animationDelay: '4s'}}></div>
+        <div className="absolute bottom-1/4 left-1/3 w-24 h-24 bg-gradient-to-br from-primary-blue/10 to-indigo-200/15 rounded-full opacity-25 animate-pulse-slow" style={{animationDelay: '1.5s'}}></div>
+        <div className="absolute top-3/4 right-1/4 w-18 h-18 bg-gradient-to-br from-amber-300/15 to-orange-300/20 rounded-full opacity-30 animate-float" style={{animationDelay: '3.5s'}}></div>
+        
+        <div className="absolute top-16 right-16 w-12 h-1 bg-gradient-to-r from-primary-brown/30 to-transparent rotate-45 animate-pulse"></div>
+        <div className="absolute bottom-32 left-32 w-1 h-12 bg-gradient-to-t from-primary-blue/30 to-transparent animate-pulse" style={{animationDelay: '1s'}}></div>
+        <div className="absolute top-40 left-1/2 w-8 h-8 border border-primary-brown/25 rotate-45 animate-spin-slow"></div>
+        
+        <div className="absolute inset-0 opacity-3">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `conic-gradient(from 0deg at 50% 50%, #594323 0deg, transparent 90deg, transparent 180deg, #052254 270deg, transparent 360deg)`,
+            backgroundSize: '100px 100px'
+          }}></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Content Grid - Left Text, Right Video */}
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Left Side - Text Content */}
+            <div className="space-y-8">
+              <div className="inline-flex items-center mb-6 bg-white/80 backdrop-blur-sm border border-amber-200 text-primary-brown px-6 py-3 rounded-full shadow-lg">
+                <span className="text-xl mr-3">🎬</span>
+                <span className="font-serif-condensed font-bold">Özel Video</span>
+              </div>
+              
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-serif-condensed text-gray-900 leading-tight">
+                <span className="text-gradient-brown-blue">
+                  Kasapoğulları
+                </span>
+                <br />
+                <span className="text-primary-blue">Tanıtım Videosu</span>
+              </h2>
+              
+              <p className="text-lg md:text-xl font-proxima text-gray-600 leading-relaxed">
+                Yurdumuzun özel tanıtım videosunu izleyerek, size sunduğumuz konforlu yaşam alanlarını keşfedin. 
+                <span className="text-primary-brown font-semibold"> Güvenli, konforlu ve modern </span>
+                yaşam alanlarımızda kendinizi evinizde hissedeceksiniz.
+              </p>
+              
+              {/* Slogan List */}
+              <div className="space-y-4">
+                <div className="flex items-center">
+                  <div className="w-8 h-8 bg-gradient-brown-blue rounded-full flex items-center justify-center mr-4">
+                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <span className="text-gray-700 font-proxima font-medium">Mükemmellik standartlarında yaşam</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-8 h-8 bg-gradient-brown-blue rounded-full flex items-center justify-center mr-4">
+                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <span className="text-gray-700 font-proxima font-medium">Eğitim hayatınızın en iyi partneri</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-8 h-8 bg-gradient-brown-blue rounded-full flex items-center justify-center mr-4">
+                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <span className="text-gray-700 font-proxima font-medium">Kalite ve güvenin adresi</span>
+                </div>
+              </div>
+              
+              {/* Call to Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <button 
+                  onClick={() => window.open('tel:+905412754343', '_self')}
+                  className="group relative px-8 py-4 bg-gradient-brown-blue text-white rounded-xl font-serif-condensed font-bold overflow-hidden shadow-xl transform hover:scale-105 transition-all duration-300"
+                >
+                  <span className="relative z-10 flex items-center justify-center">
+                    <svg className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                    Hemen Arayın
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-amber-600 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </button>
+                <button 
+                  onClick={() => {
+                    document.getElementById('iletisim')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="group relative px-8 py-4 border-2 border-primary-brown text-primary-brown rounded-xl font-serif-condensed font-bold overflow-hidden hover:bg-primary-brown hover:text-white transition-all duration-300"
+                >
+                  <span className="relative z-10 flex items-center justify-center">
+                    <svg className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    Ziyaret Edin
+                  </span>
+                </button>
+              </div>
+            </div>
+            
+            {/* Right Side - Video */}
+            <div className="flex justify-center lg:justify-end">
+              <div className="w-full max-w-sm">
+                <VideoEmbed
+                  provider="youtube"
+                  id="9L5jIcj9FXY"
+                  title="Kasapoğulları Kız Öğrenci Yurdu Tanıtım Videosu"
+                  className="group hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            </div>
+          </div>
+          
+
+                  </div>
+        </section>
+
+      {/* Second Video Section - Video Left, Text Right */}
+      <section className="py-20 bg-gradient-to-br from-amber-50 to-orange-50 relative overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute top-10 right-10 w-20 h-20 bg-gradient-to-br from-primary-brown/20 to-amber-200/20 rounded-full opacity-20 animate-float"></div>
+        <div className="absolute bottom-20 left-20 w-32 h-32 bg-gradient-to-br from-primary-blue/20 to-indigo-200/20 rounded-full opacity-20 animate-float" style={{animationDelay: '2s'}}></div>
+        <div className="absolute top-1/2 right-1/4 w-16 h-16 bg-gradient-to-br from-primary-brown/15 to-primary-blue/15 rounded-full opacity-30 animate-pulse-slow"></div>
+        
+        <div className="absolute top-1/3 left-1/3 w-28 h-28 bg-gradient-to-br from-primary-brown/10 to-amber-200/15 rounded-full opacity-25 animate-float" style={{animationDelay: '4s'}}></div>
+        <div className="absolute bottom-1/4 right-1/3 w-24 h-24 bg-gradient-to-br from-primary-blue/10 to-indigo-200/15 rounded-full opacity-25 animate-pulse-slow" style={{animationDelay: '1.5s'}}></div>
+        <div className="absolute top-3/4 left-1/4 w-18 h-18 bg-gradient-to-br from-amber-300/15 to-orange-300/20 rounded-full opacity-30 animate-float" style={{animationDelay: '3.5s'}}></div>
+        
+        <div className="absolute top-16 left-16 w-12 h-1 bg-gradient-to-r from-primary-brown/30 to-transparent -rotate-45 animate-pulse"></div>
+        <div className="absolute bottom-32 right-32 w-1 h-12 bg-gradient-to-t from-primary-blue/30 to-transparent animate-pulse" style={{animationDelay: '1s'}}></div>
+        <div className="absolute top-40 right-1/2 w-8 h-8 border border-primary-brown/25 -rotate-45 animate-spin-slow"></div>
+        
+        <div className="absolute inset-0 opacity-3">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `conic-gradient(from 180deg at 50% 50%, #594323 0deg, transparent 90deg, transparent 180deg, #052254 270deg, transparent 360deg)`,
+            backgroundSize: '100px 100px'
+          }}></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Content Grid - Video Left, Text Right */}
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Left Side - Video */}
+            <div className="flex justify-center lg:justify-start order-2 lg:order-1">
+              <div className="w-full max-w-sm">
+                <VideoEmbed
+                  provider="youtube"
+                  id="4VK-pnFLSak"
+                  title="Kasapoğulları Kız Öğrenci Yurdu Sesli Anlatım Videosu"
+                  className="group hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            </div>
+            
+            {/* Right Side - Text Content */}
+            <div className="space-y-8 order-1 lg:order-2">
+              <div className="inline-flex items-center mb-6 bg-white/80 backdrop-blur-sm border border-primary-brown text-primary-brown px-6 py-3 rounded-full shadow-lg">
+                <span className="text-xl mr-3">🎤</span>
+                <span className="font-serif-condensed font-bold">Sesli Anlatım</span>
+              </div>
+              
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-serif-condensed text-gray-900 leading-tight">
+                <span className="text-gradient-brown-blue">
+                  Detaylı
+                </span>
+                <br />
+                <span className="text-primary-blue">Sesli Tanıtım</span>
+              </h2>
+              
+              <p className="text-lg md:text-xl font-proxima text-gray-600 leading-relaxed">
+                <span className="text-primary-brown font-semibold">Eğitim yolculuğunuzda </span>
+                size en iyi yaşam alanını sunuyoruz. 
+                <span className="text-primary-blue font-semibold"> Mükemmellik ve kalite </span>
+                standartlarında hizmet.
+              </p>
+              
+              {/* Slogan List */}
+              <div className="space-y-4">
+                <div className="flex items-center">
+                  <div className="w-8 h-8 bg-gradient-brown-blue rounded-full flex items-center justify-center mr-4">
+                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <span className="text-gray-700 font-proxima font-medium">Öğrenci dostu mükemmel ortam</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-8 h-8 bg-gradient-brown-blue rounded-full flex items-center justify-center mr-4">
+                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <span className="text-gray-700 font-proxima font-medium">Başarıya giden yolda en iyi destek</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-8 h-8 bg-gradient-brown-blue rounded-full flex items-center justify-center mr-4">
+                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <span className="text-gray-700 font-proxima font-medium">Mükemmellik arayışında doğru adres</span>
+                </div>
+              </div>
+              
+              {/* Call to Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <button 
+                  onClick={() => window.open('tel:+905412754343', '_self')}
+                  className="group relative px-8 py-4 bg-gradient-brown-blue text-white rounded-xl font-serif-condensed font-bold overflow-hidden shadow-xl transform hover:scale-105 transition-all duration-300"
+                >
+                  <span className="relative z-10 flex items-center justify-center">
+                    <svg className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                    Hemen Arayın
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-amber-600 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </button>
+                <button 
+                  onClick={() => {
+                    document.getElementById('galeri')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="group relative px-8 py-4 border-2 border-primary-brown text-primary-brown rounded-xl font-serif-condensed font-bold overflow-hidden hover:bg-primary-brown hover:text-white transition-all duration-300"
+                >
+                  <span className="relative z-10 flex items-center justify-center">
+                    <svg className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    Galeriye Git
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* About Section */}
       <section id="hakkimizda" className="py-20 bg-gradient-to-br from-slate-50 via-white to-amber-50 relative overflow-hidden">
         {/* Same Background as About Section */}
