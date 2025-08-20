@@ -458,6 +458,9 @@ export default function Home() {
                   id="9L5jIcj9FXY"
                   title="Kasapoğulları Kız Öğrenci Yurdu Tanıtım Videosu"
                   className="group hover:scale-105 transition-transform duration-300"
+                  autoplay={false}
+                  enableControls={true}
+                  muted={false}
                 />
               </div>
             </div>
@@ -500,6 +503,9 @@ export default function Home() {
                   id="4VK-pnFLSak"
                   title="Kasapoğulları Kız Öğrenci Yurdu Sesli Anlatım Videosu"
                   className="group hover:scale-105 transition-transform duration-300"
+                  autoplay={false}
+                  enableControls={true}
+                  muted={false}
                 />
               </div>
             </div>
@@ -1329,6 +1335,9 @@ export default function Home() {
                   id={video.id}
                   title={video.title}
                   className="group hover:scale-105 transition-transform duration-300"
+                  muted={true}
+                  autoplay={false}
+                  enableControls={true}
                 />
               ))}
             </div>

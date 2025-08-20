@@ -1,11 +1,16 @@
 "use client";
 
+import { useEffect, useRef, useState } from 'react';
+
 interface VideoEmbedProps {
   provider: 'youtube' | 'vimeo';
   id: string;
   title: string;
   params?: string;
   className?: string;
+  autoplay?: boolean;
+  enableControls?: boolean;
+  muted?: boolean;
 }
 
 export default function VideoEmbed({ 
@@ -13,11 +18,20 @@ export default function VideoEmbed({
   id, 
   title, 
   params = '', 
-  className = '' 
+  className = '',
+  autoplay = false,
+  enableControls = true,
+  muted = false
 }: VideoEmbedProps) {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const videoRef = useRef<HTMLDivElement>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
   const getEmbedUrl = () => {
+    // YouTube parametreleri - muted kontrolü eklendi
     const baseParams = provider === 'youtube' 
-      ? 'rel=0&modestbranding=1&playsinline=1&loop=1&controls=0&showinfo=0&fs=0&iv_load_policy=3&disablekb=1&mute=1' 
+      ? `rel=0&modestbranding=1&playsinline=1&loop=1&controls=${enableControls ? 1 : 0}&showinfo=0&fs=1&iv_load_policy=3&enablejsapi=1&autoplay=${autoplay ? 1 : 0}&mute=${muted ? 1 : 0}` 
       : '';
     const combinedParams = params ? `${baseParams}&${params}` : baseParams;
     
@@ -32,11 +46,56 @@ export default function VideoEmbed({
     }
   };
 
+  // Video oynatma/durdurma kontrolü
+  const togglePlay = () => {
+    if (iframeRef.current) {
+      const iframe = iframeRef.current;
+      if (isPlaying) {
+        // Video durdurmak için iframe'e mesaj gönder
+        iframe.contentWindow?.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+        setIsPlaying(false);
+      } else {
+        // Video oynatmak için iframe'e mesaj gönder
+        iframe.contentWindow?.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+        setIsPlaying(true);
+      }
+    }
+  };
+
+  // Scroll ile görünürlük kontrolü
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+        
+        // Eğer video görünmüyorsa ve oynuyorsa durdur
+        if (!entry.isIntersecting && isPlaying) {
+          togglePlay();
+        }
+      },
+      {
+        threshold: 0.5, // Video %50 görünür olduğunda tetikle
+        rootMargin: '0px'
+      }
+    );
+
+    if (videoRef.current) {
+      observer.observe(videoRef.current);
+    }
+
+    return () => {
+      if (videoRef.current) {
+        observer.unobserve(videoRef.current);
+      }
+    };
+  }, [isPlaying]);
+
   return (
-    <div className={`relative bg-gradient-to-br from-slate-50 to-amber-50 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-amber-100 ${className}`}>
+    <div ref={videoRef} className={`relative bg-gradient-to-br from-slate-50 to-amber-50 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-amber-100 ${className}`}>
       {/* Video Container - 9:16 Aspect Ratio */}
       <div className="relative video-container" style={{ aspectRatio: '9 / 16' }}>
         <iframe
+          ref={iframeRef}
           src={getEmbedUrl()}
           title={title}
           width="100%"
@@ -48,6 +107,28 @@ export default function VideoEmbed({
           referrerPolicy="strict-origin-when-cross-origin"
           style={{ border: 0 }}
         />
+
+        {/* Oynatma/Durdurma Butonu */}
+        {enableControls && (
+          <button
+            onClick={togglePlay}
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black/70 hover:bg-black/90 text-white rounded-full p-4 transition-all duration-300 hover:scale-110 z-30"
+            aria-label={isPlaying ? 'Videoyu Durdur' : 'Videoyu Oynat'}
+          >
+            {isPlaying ? (
+              // Pause Icon
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <rect x="6" y="4" width="4" height="16" />
+                <rect x="14" y="4" width="4" height="16" />
+              </svg>
+            ) : (
+              // Play Icon
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="8,5 19,12 8,19" />
+              </svg>
+            )}
+          </button>
+        )}
         
         {/* Title Overlay - Covers YouTube's title area */}
         <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-black/60 via-black/40 to-transparent pointer-events-none z-10" />
