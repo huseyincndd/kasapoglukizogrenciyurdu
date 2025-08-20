@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 interface VideoEmbedProps {
   provider: 'youtube' | 'vimeo';
@@ -24,7 +24,6 @@ export default function VideoEmbed({
   muted = false
 }: VideoEmbedProps) {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
   const videoRef = useRef<HTMLDivElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
@@ -47,7 +46,7 @@ export default function VideoEmbed({
   };
 
   // Video oynatma/durdurma kontrolü
-  const togglePlay = () => {
+  const togglePlay = useCallback(() => {
     if (iframeRef.current) {
       const iframe = iframeRef.current;
       if (isPlaying) {
@@ -60,14 +59,14 @@ export default function VideoEmbed({
         setIsPlaying(true);
       }
     }
-  };
+  }, [isPlaying]);
 
   // Scroll ile görünürlük kontrolü
   useEffect(() => {
+    const currentVideoRef = videoRef.current;
+    
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-        
         // Eğer video görünmüyorsa ve oynuyorsa durdur
         if (!entry.isIntersecting && isPlaying) {
           togglePlay();
@@ -79,16 +78,16 @@ export default function VideoEmbed({
       }
     );
 
-    if (videoRef.current) {
-      observer.observe(videoRef.current);
+    if (currentVideoRef) {
+      observer.observe(currentVideoRef);
     }
 
     return () => {
-      if (videoRef.current) {
-        observer.unobserve(videoRef.current);
+      if (currentVideoRef) {
+        observer.unobserve(currentVideoRef);
       }
     };
-  }, [isPlaying]);
+  }, [isPlaying, togglePlay]);
 
   return (
     <div ref={videoRef} className={`relative bg-gradient-to-br from-slate-50 to-amber-50 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-amber-100 ${className}`}>
