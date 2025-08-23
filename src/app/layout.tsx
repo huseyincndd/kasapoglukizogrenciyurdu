@@ -41,7 +41,18 @@ export const metadata: Metadata = {
     "yerden ısıtmalı yurt",
     "fiber internet yurt",
     "spor salonu yurt",
-    "7/24 güvenlik yurt"
+    "7/24 güvenlik yurt",
+    "kütahya kız öğrenci yurdu fiyatları",
+    "kütahya öğrenci yurdu başvuru",
+    "kütahya kız yurdu rezervasyon",
+    "kütahya üniversite yurdu kayıt",
+    "kütahya öğrenci barınma seçenekleri",
+    "kütahya güvenli kız yurdu",
+    "kütahya merkezi öğrenci yurdu",
+    "kütahya kız öğrenci apartı",
+    "kütahya öğrenci evi kiralama",
+    "kütahya üniversite yakını yurt",
+    "kütahya öğrenci konaklama merkezi"
   ],
   authors: [{ name: "Kasapoğulları Kız Öğrenci Yurdu" }],
   creator: "Kasapoğulları Kız Öğrenci Yurdu",
@@ -59,23 +70,25 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'tr_TR',
     url: 'https://kasapogullariapart.com.tr',
-    title: "Kasapoğulları Kız Öğrenci Yurdu Kütahya | Güvenli ve Konforlu Barınma",
-    description: "Kütahya'da güvenli, konforlu ve modern kız öğrenci yurdu. Dumlupınar Üniversitesi ve Sağlık Bilimleri Üniversitesi'ne yakın, 7/24 güvenlik, yerden ısıtma, fiber internet.",
+    title: "Kasapoğulları Kız Öğrenci Yurdu Kütahya | Dumlupınar Üniversitesi Yurdu | Güvenli Barınma",
+    description: "Kütahya'da Dumlupınar Üniversitesi ve Sağlık Bilimleri Üniversitesi öğrencileri için güvenli kız öğrenci yurdu. 7/24 güvenlik, yerden ısıtma, fiber internet, spor salonu. Merkezi konumda, hemen başvurun!",
     siteName: 'Kasapoğulları Kız Öğrenci Yurdu',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Kasapoğulları Kız Öğrenci Yurdu Kütahya',
+        alt: 'Kasapoğulları Kız Öğrenci Yurdu Kütahya - Güvenli ve Konforlu Barınma',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Kasapoğulları Kız Öğrenci Yurdu Kütahya",
-    description: "Kütahya'da güvenli, konforlu ve modern kız öğrenci yurdu. Dumlupınar Üniversitesi ve Sağlık Bilimleri Üniversitesi'ne yakın.",
+    title: "Kasapoğulları Kız Öğrenci Yurdu Kütahya | Dumlupınar Üniversitesi Yurdu",
+    description: "Kütahya'da Dumlupınar Üniversitesi ve Sağlık Bilimleri Üniversitesi öğrencileri için güvenli kız öğrenci yurdu. 7/24 güvenlik, yerden ısıtma, fiber internet, spor salonu.",
     images: ['/og-image.jpg'],
+    creator: '@kasapogullarikizrezidans43',
+    site: '@kasapogullarikizrezidans43',
   },
   robots: {
     index: true,
@@ -103,8 +116,9 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <meta name="theme-color" content="#ec4899" />
-        <meta name="msapplication-TileColor" content="#ec4899" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#594323" />
+        <meta name="msapplication-TileColor" content="#594323" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         
         {/* Additional SEO Meta Tags */}
@@ -118,6 +132,20 @@ export default function RootLayout({
         <meta name="geo.placename" content="Kütahya" />
         <meta name="geo.position" content="39.4167;29.9833" />
         <meta name="ICBM" content="39.4167, 29.9833" />
+        
+        {/* Google Analytics Meta Tags */}
+        <meta name="google-site-verification" content="your-google-verification-code" />
+        <meta name="msvalidate.01" content="your-bing-verification-code" />
+        
+        {/* Additional SEO Meta Tags */}
+        <meta name="language" content="tr" />
+        <meta name="distribution" content="global" />
+        <meta name="rating" content="general" />
+        <meta name="revisit-after" content="7 days" />
+        <meta name="coverage" content="worldwide" />
+        <meta name="target" content="all" />
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="MobileOptimized" content="width" />
         
         {/* Social Media Meta Tags */}
         <meta property="og:type" content="website" />
@@ -145,7 +173,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
               "name": "Kasapoğulları Kız Öğrenci Yurdu",
-              "description": "Kütahya'da güvenli, konforlu ve modern kız öğrenci yurdu. Dumlupınar Üniversitesi ve Sağlık Bilimleri Üniversitesi'ne yakın konumda.",
+              "alternateName": "Kasapoğulları Kız Rezidans",
+              "description": "Kütahya'da Dumlupınar Üniversitesi ve Sağlık Bilimleri Üniversitesi öğrencileri için güvenli, konforlu ve modern kız öğrenci yurdu. 7/24 güvenlik, yerden ısıtma, fiber internet, spor salonu.",
               "url": "https://kasapogullariapart.com.tr",
               "telephone": "+905412754343",
               "address": {
@@ -177,6 +206,7 @@ export default function RootLayout({
                 "name": "Kütahya"
               },
               "serviceType": "Kız Öğrenci Yurdu",
+              "category": "Öğrenci Yurdu",
               "amenityFeature": [
                 {
                   "@type": "LocationFeatureSpecification",
@@ -197,6 +227,91 @@ export default function RootLayout({
                   "@type": "LocationFeatureSpecification",
                   "name": "Spor Salonu",
                   "value": true
+                },
+                {
+                  "@type": "LocationFeatureSpecification",
+                  "name": "Etüt Odaları",
+                  "value": true
+                },
+                {
+                  "@type": "LocationFeatureSpecification",
+                  "name": "Sinema Salonu",
+                  "value": true
+                },
+                {
+                  "@type": "LocationFeatureSpecification",
+                  "name": "Platinum Kart",
+                  "value": true
+                }
+              ],
+              "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Oda Seçenekleri",
+                "itemListElement": [
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Suit Oda"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Suit Mutfaklı Oda"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "VIP Oda"
+                    }
+                  }
+                ]
+              }
+            })
+          }}
+        />
+        
+        {/* Breadcrumb Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Ana Sayfa",
+                  "item": "https://kasapogullariapart.com.tr/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Kız Öğrenci Yurdu",
+                  "item": "https://kasapogullariapart.com.tr/#hakkimizda"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "Olanaklar",
+                  "item": "https://kasapogullariapart.com.tr/#olanaklar"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 4,
+                  "name": "Odalar",
+                  "item": "https://kasapogullariapart.com.tr/#odalar"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 5,
+                  "name": "İletişim",
+                  "item": "https://kasapogullariapart.com.tr/#iletisim"
                 }
               ]
             })

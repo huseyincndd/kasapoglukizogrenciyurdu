@@ -63,47 +63,113 @@ export default function Home() {
 
   const galleryImages = [
     { 
-      image: "https://villaqrmenu.b-cdn.net/kasapogullari/1.png"
+      image: "https://villaqrmenu.b-cdn.net/kasapogullari/1.png",
+      alt: "Kasapoğulları Kız Öğrenci Yurdu - Modern oda tasarımı"
     },
     { 
-      image: "https://villaqrmenu.b-cdn.net/kasapogullari/2.png"
+      image: "https://villaqrmenu.b-cdn.net/kasapogullari/2.png",
+      alt: "Kasapoğulları Kız Öğrenci Yurdu - Konforlu yaşam alanı"
     },
     { 
-      image: "https://villaqrmenu.b-cdn.net/kasapogullari/3.png"
+      image: "https://villaqrmenu.b-cdn.net/kasapogullari/3.png",
+      alt: "Kasapoğulları Kız Öğrenci Yurdu - Çalışma odası"
     },
     { 
-      image: "https://villaqrmenu.b-cdn.net/kasapogullari/4.png"
+      image: "https://villaqrmenu.b-cdn.net/kasapogullari/4.png",
+      alt: "Kasapoğulları Kız Öğrenci Yurdu - Ortak alan"
     },
     { 
-      image: "https://villaqrmenu.b-cdn.net/kasapogullari/5.png"
+      image: "https://villaqrmenu.b-cdn.net/kasapogullari/5.png",
+      alt: "Kasapoğulları Kız Öğrenci Yurdu - Banyo ve WC"
     },
     { 
-      image: "https://villaqrmenu.b-cdn.net/kasapogullari/6.png"
+      image: "https://villaqrmenu.b-cdn.net/kasapogullari/6.png",
+      alt: "Kasapoğulları Kız Öğrenci Yurdu - Mutfak alanı"
     },
     { 
-      image: "https://villaqrmenu.b-cdn.net/kasapogullari/7.png"
+      image: "https://villaqrmenu.b-cdn.net/kasapogullari/7.png",
+      alt: "Kasapoğulları Kız Öğrenci Yurdu - Spor salonu"
     },
     { 
-      image: "https://villaqrmenu.b-cdn.net/kasapogullari/8.png"
+      image: "https://villaqrmenu.b-cdn.net/kasapogullari/8.png",
+      alt: "Kasapoğulları Kız Öğrenci Yurdu - Etüt odası"
     },
     { 
-      image: "https://villaqrmenu.b-cdn.net/kasapogullari/9.png"
+      image: "https://villaqrmenu.b-cdn.net/kasapogullari/9.png",
+      alt: "Kasapoğulları Kız Öğrenci Yurdu - Teras alanı"
     },
     { 
-      image: "https://villaqrmenu.b-cdn.net/kasapogullari/10.png"
+      image: "https://villaqrmenu.b-cdn.net/kasapogullari/10.png",
+      alt: "Kasapoğulları Kız Öğrenci Yurdu - Giriş ve lobi"
     },
     { 
-      image: "https://villaqrmenu.b-cdn.net/kasapogullari/11.png"
+      image: "https://villaqrmenu.b-cdn.net/kasapogullari/11.png",
+      alt: "Kasapoğulları Kız Öğrenci Yurdu - Güvenlik sistemi"
     },
     { 
-      image: "https://villaqrmenu.b-cdn.net/kasapogullari/12.png"
+      image: "https://villaqrmenu.b-cdn.net/kasapogullari/12.png",
+      alt: "Kasapoğulları Kız Öğrenci Yurdu - Dış görünüm"
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-blue-50">
+    <>
+      {/* FAQ Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Kasapoğulları Kız Öğrenci Yurdu nerede bulunuyor?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Kasapoğulları Kız Öğrenci Yurdu, Kütahya merkezde Yıldırım Beyazıt Mahallesi, Özengi sokak, no:2 adresinde bulunmaktadır."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Hangi üniversitelere yakın konumda?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Dumlupınar Üniversitesi ve Kütahya Sağlık Bilimleri Üniversitesi'ne otobüs durağına 300 metre mesafede bulunmaktadır."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Yurdunuzda hangi olanaklar mevcut?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "7/24 güvenlik, yerden ısıtma, fiber internet, spor salonu, etüt odaları, sinema salonu ve Platinum Kart ayrıcalıkları bulunmaktadır."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Oda seçenekleri nelerdir?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Suit Oda, Suit Mutfaklı Oda ve VIP Oda seçenekleri mevcuttur."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "İletişim bilgileriniz nelerdir?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Telefon: +90 541 275 43 43, Instagram: @kasapogullarikizrezidans43"
+                }
+              }
+            ]
+          })
+        }}
+      />
+      
+      <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-blue-50">
       {/* Navigation */}
-      <nav id="navbar" className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-lg transition-all duration-300">
+      <nav id="navbar" className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-lg transition-all duration-300" role="navigation" aria-label="Ana navigasyon">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
@@ -111,15 +177,15 @@ export default function Home() {
                 Kasapoğulları Kız Öğrenci Yurdu
               </div>
             </div>
-            <div className="hidden md:flex space-x-8">
-              <a href="#anasayfa" className="nav-link hover:text-primary-brown transition-colors">Ana Sayfa</a>
-              <a href="#hakkimizda" className="nav-link hover:text-primary-brown transition-colors">Hakkımızda</a>
-              <a href="#olanaklar" className="nav-link hover:text-primary-brown transition-colors">Olanaklar</a>
-              <a href="#odalar" className="nav-link hover:text-primary-brown transition-colors">Odalar</a>
-              <a href="#galeri" className="nav-link hover:text-primary-brown transition-colors">Galeri</a>
-              <a href="#yorumlar" className="nav-link hover:text-primary-brown transition-colors">Yorumlar</a>
-              <a href="#konum" className="nav-link hover:text-primary-brown transition-colors">Konum</a>
-              <a href="#iletisim" className="nav-link hover:text-primary-brown transition-colors">İletişim</a>
+            <div className="hidden md:flex space-x-8" role="menubar">
+              <a href="#anasayfa" className="nav-link hover:text-primary-brown transition-colors" role="menuitem">Ana Sayfa</a>
+              <a href="#hakkimizda" className="nav-link hover:text-primary-brown transition-colors" role="menuitem">Hakkımızda</a>
+              <a href="#olanaklar" className="nav-link hover:text-primary-brown transition-colors" role="menuitem">Olanaklar</a>
+              <a href="#odalar" className="nav-link hover:text-primary-brown transition-colors" role="menuitem">Odalar</a>
+              <a href="#galeri" className="nav-link hover:text-primary-brown transition-colors" role="menuitem">Galeri</a>
+              <a href="#yorumlar" className="nav-link hover:text-primary-brown transition-colors" role="menuitem">Yorumlar</a>
+              <a href="#konum" className="nav-link hover:text-primary-brown transition-colors" role="menuitem">Konum</a>
+              <a href="#iletisim" className="nav-link hover:text-primary-brown transition-colors" role="menuitem">İletişim</a>
             </div>
             <button className="md:hidden mobile-menu-btn">
               <div className="space-y-1">
@@ -133,7 +199,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section with Slider */}
-      <section id="anasayfa" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section id="anasayfa" className="relative min-h-screen flex items-center justify-center overflow-hidden" role="banner" aria-label="Ana sayfa hero bölümü">
         {/* Slider Background */}
         <div className="absolute inset-0 z-0">
           <div className="relative w-full h-full">
@@ -183,7 +249,13 @@ export default function Home() {
               Kütahya&apos;da güvenli, konforlu ve modern yaşam alanları ile eğitim hayatınızda size destek oluyoruz. Dumlupınar Üniversitesi ve Sağlık Bilimleri Üniversitesi&apos;ne yakın konumda.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <button className="group relative px-12 py-6 bg-gradient-brown-blue text-white rounded-full text-xl font-bold font-serif-condensed overflow-hidden shadow-2xl transform hover:scale-110 transition-all duration-500 backdrop-blur-sm">
+              <button 
+                onClick={() => {
+                  document.getElementById('iletisim')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="group relative px-12 py-6 bg-gradient-brown-blue text-white rounded-full text-xl font-bold font-serif-condensed overflow-hidden shadow-2xl transform hover:scale-110 transition-all duration-500 backdrop-blur-sm"
+                aria-label="Hemen başvuru yapmak için iletişim bölümüne git"
+              >
                 <span className="relative z-10 flex items-center justify-center">
                   <svg className="w-6 h-6 mr-3 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
@@ -199,6 +271,7 @@ export default function Home() {
               <button 
                 onClick={() => window.open('tel:+905412754343', '_self')}
                 className="group relative px-12 py-6 border-3 border-white text-white rounded-full text-xl font-bold font-serif-condensed overflow-hidden shadow-2xl transform hover:scale-110 transition-all duration-500 backdrop-blur-sm hover:bg-white hover:text-primary-blue"
+                aria-label="Hemen aramak için telefon numarasını çevir"
               >
                 <span className="relative z-10 flex items-center justify-center">
                   <svg className="w-6 h-6 mr-3 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -601,7 +674,7 @@ export default function Home() {
                 <div className="relative h-48 overflow-hidden">
                   <img 
                     src={facility.image} 
-                    alt={facility.title}
+                    alt={`Kasapoğulları Kız Öğrenci Yurdu - ${facility.title}`}
                     width="800"
                     height="600"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
@@ -1083,7 +1156,7 @@ export default function Home() {
                 <div className="relative h-80 overflow-hidden">
                   <img 
                     src={item.image} 
-                    alt="Galeri Resmi"
+                    alt={item.alt}
                     className="w-full h-full object-cover transition-transform duration-300 ease-out"
                     style={{
                       willChange: 'transform',
@@ -1513,7 +1586,7 @@ export default function Home() {
             <div className="relative w-full h-full flex items-center justify-center">
               <img
                 src={galleryImages[currentImageIndex].image}
-                alt={`Galeri Resmi ${currentImageIndex + 1}`}
+                alt={galleryImages[currentImageIndex].alt}
                 className="max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain rounded-lg shadow-2xl"
                 style={{
                   minWidth: '60vw',
@@ -1535,5 +1608,6 @@ export default function Home() {
         </div>
       )}
     </div>
+    </>
   );
 }
