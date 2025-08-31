@@ -450,7 +450,7 @@ export default function Home() {
               </div>
             </div>
             
-            {/* Right Side - Video */}
+            {/* Right Side - Videoa */}
             <div className="flex justify-center lg:justify-end">
               <div className="w-full max-w-sm">
                 <VideoEmbed
