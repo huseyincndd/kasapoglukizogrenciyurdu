@@ -460,7 +460,7 @@ export default function Home() {
                   className="group hover:scale-105 transition-transform duration-300"
                   autoplay={false}
                   enableControls={true}
-                  muted={false}
+                  muted={true}
                 />
               </div>
             </div>
@@ -505,7 +505,7 @@ export default function Home() {
                   className="group hover:scale-105 transition-transform duration-300"
                   autoplay={false}
                   enableControls={true}
-                  muted={false}
+                  muted={true}
                 />
               </div>
             </div>
